@@ -421,14 +421,14 @@ h2 {
     background: #4F4E54;
 }
 
-.map-container {
+/*.map-container {
     height: 200px;
     background: #f0f0f0;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
+}*/
 
 /* Floating button */
 .floating-btn {
@@ -521,3 +521,5 @@ body {
 h1, h2, h3, .studio-name, .hero-title {
   font-family: 'Playfair Display', serif;
 }
+
+
