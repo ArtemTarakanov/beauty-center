@@ -540,3 +540,108 @@ h1, h2, h3, .studio-name, .hero-title {
 }
 
 
+
+.service-dropdown {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.dropdown-header {
+    background: #4F4E54;
+    color: white;
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.dropdown-header:hover {
+    background: #5a595f;
+}
+
+.dropdown-header.active {
+    background: #F06E90;
+}
+
+.dropdown-arrow {
+    transition: transform 0.3s ease;
+    font-size: 14px;
+}
+
+.dropdown-header.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: white;
+    border-left: 3px solid #F06E90;
+}
+
+.dropdown-content.active {
+    max-height: 500px;
+}
+
+.dropdown-item {
+    padding: 15px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s ease;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background: #f8f8f8;
+}
+
+.price {
+    color: #F06E90;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Планшет */
+@media (min-width: 768px) {
+    .dropdown-header {
+        padding: 25px;
+        font-size: 18px;
+    }
+    
+    .dropdown-item {
+        padding: 18px 25px;
+    }
+    
+    .price {
+        font-size: 16px;
+    }
+}
+
+/* Десктоп */
+@media (min-width: 1024px) {
+    .service-dropdown {
+        margin-bottom: 20px;
+    }
+    
+    .dropdown-header {
+        padding: 30px;
+        font-size: 20px;
+    }
+    
+    .dropdown-item {
+        padding: 20px 30px;
+    }
+}
