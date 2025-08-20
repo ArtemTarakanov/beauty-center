@@ -21,23 +21,34 @@ body {
 .header {
     background: #4F4E54;
     color: white;
-    padding: 15px 0;
+    height: 60px; /* фиксированная высота вместо padding */
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    display: flex; /* добавляем flex для выравнивания */
+    align-items: center; /* центрируем содержимое */
+    
 }
 
 .header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100%; /* занимаем всю высоту хедера */
+    
 }
 
 .logo-img {
-    height: 40px;
+    height: 45px; /* или любой размер, который вам нужен */
     width: auto;
+    max-height: 60px; /* но не больше чем высота хедера минус отступы */
+    object-fit: contain;
+    
+    
 }
+
+
 
 .studio-name {
     font-size: 18px;
@@ -53,6 +64,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    position: absolute; /* абсолютное позиционирование */
+    right: 20px; /* отступ от правого края */
+    top: 50%; /* центрируем по вертикали */
+    transform: translateY(-50%); /* точное центрирование */
 }
 
 .burger-menu span {
@@ -421,14 +436,16 @@ h2 {
     background: #4F4E54;
 }
 
-/*.map-container {
+.map-container {
     height: 200px;
     background: #f0f0f0;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-}*/
+}
+
+
 
 /* Floating button */
 .floating-btn {
