@@ -512,3 +512,12 @@ h2 {
         height: 400px;
     }
 }
+
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, .studio-name, .hero-title {
+  font-family: 'Playfair Display', serif;
+}
