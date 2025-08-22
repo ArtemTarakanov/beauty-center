@@ -645,3 +645,124 @@ h1, h2, h3, .studio-name, .hero-title {
         padding: 20px 30px;
     }
 }
+
+.services-preview {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+    margin-bottom: 40px;
+}
+
+.service-preview-card {
+    background: #f8f8f8;
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 4px solid #F06E90;
+    transition: all 0.3s ease;
+}
+
+.service-preview-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(240, 110, 144, 0.15);
+    border-left-width: 6px;
+}
+
+.service-preview-card h3 {
+    color: #F06E90;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.service-preview-card p {
+    color: #4F4E54;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.price-range {
+    color: #F06E90;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Стили для кнопки перехода */
+.services-cta {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.services-btn {
+    background: linear-gradient(135deg, #F06E90 0%, #4F4E54 100%);
+    color: white;
+    padding: 20px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(240, 110, 144, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.services-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.services-btn:hover::before {
+    left: 100%;
+}
+
+.services-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(240, 110, 144, 0.4);
+}
+
+.btn-icon {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.services-btn:hover .btn-icon {
+    transform: translateX(5px);
+}
+
+.services-subtitle {
+    color: #4F4E54;
+    margin-top: 15px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* Планшет */
+@media (min-width: 768px) {
+    .services-preview {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .service-preview-card h3 {
+        font-size: 20px;
+    }
+}
+
+/* Десктоп */
+@media (min-width: 1024px) {
+    .services-preview {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .services-btn {
+        font-size: 20px;
+        padding: 25px 50px;
+    }
+}
