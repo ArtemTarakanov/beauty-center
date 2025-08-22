@@ -44,7 +44,7 @@ body {
     width: auto;
     max-height: 60px; /* но не больше чем высота хедера минус отступы */
     object-fit: contain;
-    
+    filter: brightness(0) invert(1);
     
 }
 
