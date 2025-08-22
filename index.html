@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Студия красивых тел</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -186,8 +189,12 @@
                 <a href="https://t.me/+79898000622" class="social-link telegram">Telegram</a>
             </div>
             <div class="map-container">
-                <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/studiya_krasivykh_tel/229135518042/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Студия красивых тел</a><a href="https://yandex.ru/maps/35/krasnodar/category/hair_removal/240441342749/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Эпиляция, депиляция в Краснодаре</a><a href="https://yandex.ru/maps/35/krasnodar/category/massage_salon/184106074/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:28px;">Массажный салон в Краснодаре</a><iframe src="https://yandex.ru/map-widget/v1/org/studiya_krasivykh_tel/229135518042/?indoorLevel=1&ll=38.945950%2C45.059173&z=17.36" width="400" height="200"  allowfullscreen="true"  style="position:relative;"></iframe></div>
-            </div>
+  <iframe 
+    src="https://yandex.ru/map-widget/v1/org/studiya_krasivykh_tel/229135518042/?indoorLevel=1&ll=38.945950%2C45.059173&z=17.36" 
+    allowfullscreen="true">
+  </iframe>
+</div>
+
         </div>
     </section>
 
@@ -210,29 +217,74 @@
     <a href="https://n1200395.yclients.com/company/1099799/personal/menu?o=" class="floating-btn" id="bookingBtn">Записаться</a>
 
     <script>
-        // Typewriter effect
-        const text = "Ваше тело - ваше искусство";
         const typewriterElement = document.getElementById('typewriter');
-        let i = 0;
-
-        function typeWriter() {
-            if (i < text.length) {
-                typewriterElement.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
+        const baseText = "Студия ";
+        const words = ["красивых", "гладких", "идеальных", "стройных", "совершенных", "изящных"];
+        const endText = " тел";
+        
+        let currentWordIndex = 0;
+        let isDeleting = false;
+        let currentText = "";
+        let charIndex = 0;
+        
+        function typeEffect() {
+            const currentWord = words[currentWordIndex];
+            const fullText = baseText + currentWord + endText;
+            
+            if (!isDeleting) {
+                // Печатаем текст
+                if (charIndex <= fullText.length) {
+                    currentText = fullText.substring(0, charIndex);
+                    
+                    // Выделяем изменяемое слово цветом
+                    if (charIndex > baseText.length && charIndex <= baseText.length + currentWord.length) {
+                        const beforeWord = baseText;
+                        const wordPart = currentWord.substring(0, charIndex - baseText.length);
+                        const afterWord = charIndex > baseText.length + currentWord.length ? endText : "";
+                        
+                        typewriterElement.innerHTML = beforeWord + '<span class="changing-word">' + wordPart + '</span>' + afterWord;
+                    } else {
+                        typewriterElement.textContent = currentText;
+                    }
+                    
+                    charIndex++;
+                    setTimeout(typeEffect, 100);
+                } else {
+                    // Пауза перед началом удаления
+                    setTimeout(() => {
+                        isDeleting = true;
+                        typeEffect();
+                    }, 2000);
+                }
             } else {
-                // Remove cursor after typing is complete
-                setTimeout(() => {
-                    typewriterElement.style.borderRight = 'none';
-                }, 1000);
+                // Удаляем только изменяемое слово
+                if (charIndex > baseText.length) {
+                    charIndex--;
+                    const beforeWord = baseText;
+                    const wordPart = currentWord.substring(0, charIndex - baseText.length);
+                    const afterWord = endText;
+                    
+                    if (wordPart.length > 0) {
+                        typewriterElement.innerHTML = beforeWord + '<span class="changing-word">' + wordPart + '</span>' + afterWord;
+                    } else {
+                        typewriterElement.textContent = beforeWord + afterWord;
+                    }
+                    
+                    setTimeout(typeEffect, 50);
+                } else {
+                    // Переходим к следующему слову
+                    isDeleting = false;
+                    currentWordIndex = (currentWordIndex + 1) % words.length;
+                    charIndex = baseText.length;
+                    setTimeout(typeEffect, 200);
+                }
             }
         }
-
-        // Start typewriter effect after page loads
+        
+        // Начинаем анимацию после загрузки страницы
         window.addEventListener('load', () => {
-            setTimeout(typeWriter, 500);
+            setTimeout(typeEffect, 500);
         });
-
         // Burger menu
         document.getElementById('burger').addEventListener('click', function() {
             this.classList.toggle('active');
@@ -330,6 +382,8 @@ document.addEventListener('click', function(event) {
         });
     }
 });
+
+
 </script>
 
 </body>
