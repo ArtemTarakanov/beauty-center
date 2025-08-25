@@ -46,6 +46,7 @@
             left: 20px;
             top: 50%;
             transform: translateY(-50%);
+            filter: brightness(0) invert(1);
         }
 
         .back-link {
@@ -76,73 +77,133 @@
         .page-title {
             font-family: 'Playfair Display', serif;
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 32px;
-            color: #4F4E54;
-        }
-
-        .services-section {
             margin-bottom: 50px;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            color: #F06E90;
-            margin-bottom: 25px;
-            text-align: center;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 2px;
-            background: #F06E90;
-        }
-
-        .subsection {
-            margin-bottom: 30px;
-        }
-
-        .subsection-title {
-            font-size: 18px;
-            font-weight: 600;
+            font-size: 42px;
             color: #4F4E54;
-            margin-bottom: 15px;
-            padding-left: 15px;
-            border-left: 3px solid #F06E90;
+        }
+
+        /* Service Cards Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* Service Card */
+.service-card {
+    position: relative;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+.card-background {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card-background img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px 20px 0 0;
+}
+
+.card-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(79, 78, 84, 0.3), rgba(79, 78, 84, 0.7));
+    border-radius: 20px 20px 0 0;
+}
+
+
+
+        /* Card Content */
+.card-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    background: white;
+    border-radius: 0 0 20px 20px;
+    flex: 1;
+}
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #F06E90;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .card-subtitle {
+            font-size: 16px;
+            color: #4F4E54;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        /* Service Items */
+        .service-items {
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .service-items::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .service-items::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .service-items::-webkit-scrollbar-thumb {
+            background: #F06E90;
+            border-radius: 10px;
         }
 
         .service-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #e0e0e0;
-            transition: all 0.2s ease;
-        }
-
-        .service-item:last-child {
-            border-bottom: none;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background: rgba(240, 110, 144, 0.05);
+            border-radius: 10px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
         }
 
         .service-item:hover {
-            background: rgba(240, 110, 144, 0.05);
-            margin: 0 -10px;
-            padding: 12px 10px;
-            border-radius: 8px;
+            background: rgba(240, 110, 144, 0.1);
+            border-left-color: #F06E90;
+            transform: translateX(5px);
         }
 
         .service-name {
             font-size: 14px;
             color: #4F4E54;
             flex: 1;
+            font-weight: 500;
         }
 
         .service-price {
@@ -152,387 +213,46 @@
             margin-left: 10px;
         }
 
-        /* Базовые стили для всех списков услуг с фоновыми изображениями */
-        .service-list-base {
-            background: #f8f8f8;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-list-base::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 12px;
-            z-index: 1;
-        }
-
-        .service-list-base > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Женские услуги эпиляции */
-        /* === Блок с услугами для женщин === */
-.women-service-list {
-    background: #f8f8f8; /* базовый цвет, если картинка не загрузится */
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-
-    /* Картинка на фоне */
-    background-image: url("images/women.jpg");
-    background-size: contain;       /* Заполняет весь блок */
-    background-repeat: no-repeat; /* Без повторов */
-    background-position: center;  /* Центрирование */
-    background-attachment: fixed; /* (опция) фикс при скролле */
-    
-    position: relative;  /* Нужно для псевдоэлемента */
-    overflow: hidden;    /* Чтобы скругления обрезали фон */
-}
-
-/* Полупрозрачный белый слой поверх картинки */
-.women-service-list::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.5); /* белая "дымка" */
-    border-radius: 12px;
-    z-index: 1;
-}
-
-/* Контент внутри блока будет поверх слоя */
-.women-service-list > * {
-    position: relative;
-    z-index: 2;
-}
-
-/* Вариант с градиентом вместо белого наложения */
-.women-service-list.gradient-overlay::before {
-    background: linear-gradient(
-        135deg,
-        rgba(240, 110, 144, 0.1) 0%,
-        rgba(255, 255, 255, 0.9) 50%,
-        rgba(79, 78, 84, 0.1) 100%
-    );
-}
-
-
-        /* Мужские услуги эпиляции */
-        /* === Блок с услугами для мужчин === */
-.men-service-list {
-    background: #f8f8f8;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-
-    /* Картинка на фоне */
-    background-image: url("images/men.jpg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-
-    position: relative;
-    overflow: hidden;
-}
-
-/* Полупрозрачный слой */
-.men-service-list::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.4); /* чуть прозрачнее, чем у женских */
-    border-radius: 12px;
-    z-index: 1;
-}
-
-/* Контент поверх */
-.men-service-list > * {
-    position: relative;
-    z-index: 2;
-}
-
-/* Вариант с градиентом */
-.men-service-list.gradient-overlay::before {
-    background: linear-gradient(
-        135deg,
-        rgba(120, 180, 255, 0.15) 0%,
-        rgba(255, 255, 255, 0.85) 50%,
-        rgba(70, 130, 180, 0.15) 100%
-    );
-}
-
-
-
-
-        /* LPG массаж */
-        .lpg-service-list {
-            background: #f8f8f8;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            background-image: url("images/lpg-massage.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .lpg-service-list::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 12px;
-            z-index: 1;
-        }
-
-        .lpg-service-list > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Другие процедуры коррекции фигуры */
-        .body-procedures-service-list {
-            background: #f8f8f8;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            background-image: url("images/body-procedures.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .body-procedures-service-list::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 12px;
-            z-index: 1;
-        }
-
-        .body-procedures-service-list > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* INDIBA для тела */
-        .indiba-body-service-list {
-            background: #f8f8f8;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            background-image: url("images/indiba-body.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .indiba-body-service-list::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 12px;
-            z-index: 1;
-        }
-
-        .indiba-body-service-list > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Процедуры для лица */
-        .face-procedures-service-list {
-            background: #f8f8f8;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            background-image: url("images/face-procedures.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .face-procedures-service-list::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 12px;
-            z-index: 1;
-        }
-
-        .face-procedures-service-list > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* INDIBA для лица */
-        .indiba-face-service-list {
-            background: #f8f8f8;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            background-image: url("images/indiba-face.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .indiba-face-service-list::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 12px;
-            z-index: 1;
-        }
-
-        .indiba-face-service-list > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Удаление татуировок */
-        .tattoo-removal-service-list {
-            background: #f8f8f8;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            background-image: url("images/tattoo-removal.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tattoo-removal-service-list::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 12px;
-            z-index: 1;
-        }
-
-        .tattoo-removal-service-list > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Специальные процедуры */
-        .special-procedures-service-list {
-            background: #f8f8f8;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            background-image: url("images/special-procedures.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .special-procedures-service-list::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 12px;
-            z-index: 1;
-        }
-
-        .special-procedures-service-list > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Комплексные программы */
-        .combo-programs {
-            background: linear-gradient(135deg, #F06E90 0%, #4F4E54 100%);
-            border-radius: 12px;
-            padding: 20px;
+        /* Combo Programs */
+        .combo-section {
             margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #F06E90 0%, #4F4E54 100%);
+            border-radius: 15px;
+            color: white;
         }
 
-        .combo-programs .subsection-title {
+        .combo-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
             color: white;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .combo-section .service-item {
+            background: rgba(255,255,255,0.1);
+            border-left-color: rgba(255,255,255,0.3);
+        }
+
+        .combo-section .service-item:hover {
+            background: rgba(255,255,255,0.2);
             border-left-color: white;
         }
 
-        .combo-programs .service-item {
-            border-bottom-color: rgba(255,255,255,0.2);
-        }
-
-        .combo-programs .service-name {
+        .combo-section .service-name {
             color: white;
         }
 
-        .combo-programs .service-price {
+        .combo-section .service-price {
             color: #FFE4EC;
         }
 
-        .combo-programs .service-item:hover {
-            background: rgba(255,255,255,0.1);
-        }
-
         .package-deal {
-            font-size: 12px;
+            font-size: 11px;
             color: rgba(255,255,255,0.8);
             font-style: italic;
-            margin-top: 5px;
+            margin-top: 3px;
         }
 
         /* Floating button */
@@ -556,11 +276,11 @@
             transform: translateY(-2px);
         }
 
-        /* Footer styles */
+        /* Footer */
         .footer {
             background: #4F4E54;
             color: white;
-            margin-top: 30px;
+            margin-top: 50px;
             padding: 20px 0;
             border-top: 1px solid rgba(240, 110, 144, 0.2);
         }
@@ -616,115 +336,218 @@
         }
 
         /* Mobile optimizations */
-        @media (max-width: 768px) {
-            .service-item {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 15px 0;
-            }
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 
-            .service-name {
-                margin-bottom: 5px;
-                font-size: 15px;
-            }
+    .page-title {
+        font-size: 28px;
+    }
 
-            .service-price {
-                margin-left: 0;
-                font-size: 15px;
-            }
+    .card-title {
+        font-size: 24px;
+    }
 
-            .page-title {
-                font-size: 28px;
-            }
+    .service-items {
+        max-height: 250px;
+    }
 
-            .section-title {
-                font-size: 22px;
-            }
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
 
-            .footer {
-                padding: 15px 0;
-                margin-top: 10px;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-            }
-            
-            .footer-left {
-                flex-direction: column;
-                gap: 8px;
-            }
-            
-            .footer-logo {
-                height: 30px;
-            }
-            
-            .footer-copyright {
-                font-size: 13px;
-            }
-        }
+    .footer-left {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .footer-logo {
+        height: 30px;
+    }
+
+    .footer-copyright {
+        font-size: 13px;
+    }
+}
 
         /* Tablet */
-        @media (min-width: 768px) {
-            .service-name {
-                font-size: 15px;
-            }
-
-            .service-price {
-                font-size: 15px;
-            }
-
-            .page-title {
-                font-size: 36px;
-            }
-
-            .section-title {
-                font-size: 26px;
-            }
-
-            .footer-copyright {
-                font-size: 15px;
-            }
-            
-            .footer-logo {
-                height: 40px;
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        /* Desktop */
-        @media (min-width: 1024px) {
-            .service-name {
-                font-size: 16px;
-            }
-
-            .service-price {
-                font-size: 16px;
-            }
-
-            .page-title {
-                font-size: 42px;
-            }
-
-            .section-title {
-                font-size: 28px;
-            }
-        }
-
-        /* Анимация появления */
-        .footer {
+        /* Animation */
+        .service-card {
             opacity: 0;
-            animation: fadeInUp 0.6s ease 0.3s forwards;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
         }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
+        .footer {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.5s forwards;
+        }
+
+
+
+
+/* ИЗМЕНЕНИЯ*/
+/* Обновленный стиль для заголовка "Наши услуги" с полосками по бокам */
+.page-title {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 52px; /* Увеличил размер с 42px до 52px */
+    color: #4F4E54;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px; /* Расстояние между полосками и текстом */
+}
+
+/* Полоски по бокам от заголовка */
+.page-title::before,
+.page-title::after {
+    content: '';
+    flex: 1;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #F06E90, transparent);
+    border-radius: 2px;
+    max-width: 150px; /* Ограничиваем максимальную длину полосок */
+}
+
+/* Левая полоска */
+.page-title::before {
+    background: linear-gradient(90deg, transparent, #F06E90);
+}
+
+/* Правая полоска */
+.page-title::after {
+    background: linear-gradient(-90deg, transparent, #F06E90);
+}
+
+/* Подчеркивание под заголовком (можно оставить или убрать) */
+.page-title .underline {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: #F06E90;
+    border-radius: 2px;
+}
+
+/* Альтернативный вариант - если хотите еще больше размер */
+.page-title.large {
+    font-size: 58px; /* Еще больший размер */
+    gap: 40px;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 36px; /* Адаптивный размер для мобильных */
+        gap: 20px;
+    }
+    
+    .page-title::before,
+    .page-title::after {
+        max-width: 80px; /* Короче полоски на мобильных */
+    }
+    
+    .page-title.large {
+        font-size: 42px;
+        gap: 25px;
+    }
+}
+
+
+
+/*КНОПКА */
+ 
+.back-link {
+    color: white;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #F06E90 0%, #E85A7A 100%);
+    border: none;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 4px 15px rgba(240, 110, 144, 0.3);
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.back-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.back-link:hover::before {
+    left: 100%;
+}
+
+.back-link:hover {
+    transform: translateY(-50%) translateY(-3px);
+    box-shadow: 0 8px 25px rgba(240, 110, 144, 0.4);
+    background: linear-gradient(135deg, #E85A7A 0%, #F06E90 100%);
+}
+
+    .back-link {
+    color: white;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 14px 28px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    backdrop-filter: blur(5px);
+}
+
+.back-link:hover {
+    background: white;
+    color: #4F4E54;
+    border-color: white;
+    transform: translateY(-50%) translateY(-1px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+    

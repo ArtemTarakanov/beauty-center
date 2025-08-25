@@ -242,18 +242,7 @@ body {
     position: absolute;
     width: 20px;
     height: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    animation: float 6s ease-in-out infinite;
-}
-
-.floating-element:nth-child(1) {
-    top: 20%;
-    left: 10%;
-    animation-delay: 0s;
-}
-
-.floating-element:nth-child(2) {
+    floating-element:nth-child(2) {
     top: 60%;
     right: 10%;
     animation-delay: 2s;
@@ -298,7 +287,18 @@ h2 {
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8f9fa;
+} background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
 }
+
+.floating-element:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.fl
 
 .container {
     max-width: 1200px;
@@ -1041,3 +1041,139 @@ h1, h2, h3, .studio-name, .hero-title {
 }
 
 
+
+.hero-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 25px;
+    position: relative;
+    text-shadow: 
+        0 0 5px rgba(240, 110, 144, 0.5),
+        0 0 10px rgba(240, 110, 144, 0.3),
+        0 0 15px rgba(240, 110, 144, 0.2);
+    animation: neonGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes neonGlow {
+    from {
+        text-shadow: 
+            0 0 5px rgba(240, 110, 144, 0.5),
+            0 0 10px rgba(240, 110, 144, 0.3),
+            0 0 15px rgba(240, 110, 144, 0.2);
+    }
+    to {
+        text-shadow: 
+            0 0 10px rgba(240, 110, 144, 0.8),
+            0 0 20px rgba(240, 110, 144, 0.5),
+            0 0 30px rgba(240, 110, 144, 0.3);
+    }
+}
+
+.hero-title .neon-accent {
+    color: #F06E90;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 35px;
+    font-weight: 300;
+}
+
+.cta-button {
+    background: transparent;
+    color: #F06E90;
+    border: 2px solid #F06E90;
+    padding: 18px 35px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 0 10px rgba(240, 110, 144, 0.3),
+        inset 0 0 10px rgba(240, 110, 144, 0.1);
+}
+
+.cta-button:hover {
+    background: #F06E90;
+    color: white;
+    box-shadow: 
+        0 0 20px rgba(240, 110, 144, 0.6),
+        0 0 30px rgba(240, 110, 144, 0.4);
+    transform: scale(1.02);
+}
+
+/* Исправление центрирования заголовков h2 */
+h2, .section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #4F4E54;
+}
+
+/* Убедитесь что центрирование сохраняется на всех экранах */
+@media (min-width: 768px) {
+    h2, .section-title {
+        text-align: center;
+        font-size: 28px;
+    }
+}
+
+@media (min-width: 1024px) {
+    h2, .section-title {
+        text-align: center;
+        font-size: 28px;
+    }
+}
+
+.promo-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #F06E90 0%, #ff7ba3 100%);
+    color: #ffffff;
+    padding: 15px;
+    text-align: center;
+}
+
+.promo-content h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.promo-content p {
+    font-size: 0.8rem;
+    color: #ffffff;
+}
+
+/* Чередование позиций */
+.promo-card:nth-child(2) .promo-content,
+.promo-card:nth-child(4) .promo-content {
+    bottom: auto;
+    top: 0;
+}
+
+/* Отступы для секций отзывов и контактов */
+.reviews {
+    margin-top: 60px; /* Отступ сверху */
+    margin-bottom: 40px; /* Отступ снизу */
+}
+
+.contacts {
+    margin-top: 60px; /* Отступ сверху */
+    margin-bottom: 40px; /* Отступ снизу */
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    .reviews, .contacts {
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
+}
