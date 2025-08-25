@@ -583,38 +583,15 @@ body {
 .map-container {
     position: relative;
     width: 100%;
-    height: 250px; /* Базовая высота для мобилки */
+    height: 300px; /* базовая высота */
     border-radius: 8px;
-    overflow: hidden;
-    margin-top: 20px;
+    overflow: hidden; /* чтобы скругления применялись и к iframe */
 }
 
 .map-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100% !important;
-    height: 100% !important;
+    width: 100%;
+    height: 100%;
     border: 0;
-}
-
-/* Скрываем текстовые ссылки Яндекса */
-.map-container a {
-    display: none !important;
-}
-
-/* Планшет */
-@media (min-width: 768px) {
-    .map-container {
-        height: 350px;
-    }
-}
-
-/* Десктоп */
-@media (min-width: 1024px) {
-    .map-container {
-        height: 450px;
-    }
 }
 
 
@@ -1062,3 +1039,5 @@ h1, h2, h3, .studio-name, .hero-title {
   70% { box-shadow: 0 0 0 15px rgba(240,110,144,0); }
   100% { box-shadow: 0 0 0 0 rgba(240,110,144,0); }
 }
+
+
