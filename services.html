@@ -50,15 +50,14 @@
             width: auto;
             max-height: 60px;
             object-fit: contain;
-            position: absolute; /* абсолютное позиционирование */
-            left: 20px; /* отступ от правого края */
-            top: 50%; /* центрируем по вертикали */
+            position: absolute;
+            left: 20px;
+            top: 50%;
             transform: translateY(-50%);
             filter: brightness(0) invert(1);
         }
 
         .back-link {
-            
             color: white;
             text-decoration: none;
             font-size: 10px;
@@ -66,11 +65,10 @@
             border: 2px solid white;
             border-radius: 25px;
             transition: all 0.3s ease;
-            position: absolute; /* абсолютное позиционирование */
-            right: 20px; /* отступ от правого края */
-            top: 50%; /* центрируем по вертикали */
+            position: absolute;
+            right: 20px;
+            top: 50%;
             transform: translateY(-50%);
-
         }
 
         .back-link:hover {
@@ -87,80 +85,133 @@
         .page-title {
             font-family: 'Playfair Display', serif;
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 32px;
+            margin-bottom: 50px;
+            font-size: 42px;
             color: #4F4E54;
         }
 
-        .services-section {
-            margin-bottom: 50px;
+        /* Service Cards Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            color: #F06E90;
-            margin-bottom: 25px;
-            text-align: center;
+        /* Service Card */
+        .service-card {
             position: relative;
-            padding-bottom: 10px;
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            min-height: 600px;
         }
 
-        .section-title::after {
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        /* Card Background */
+        .card-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .card-background::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 2px;
-            background: #F06E90;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(79, 78, 84, 0.3), rgba(79, 78, 84, 0.7));
         }
 
-        .subsection {
-            margin-bottom: 30px;
-        }
+        /* Background images for different cards */
+        .women-bg { background-image: url('images/women.jpg'); }
+        .men-bg { background-image: url('images/men.jpg'); }
+        .body-bg { background-image: url('images/body.jpg'); }
+        .cosmetology-bg { background-image: url('images/cosmetology.jpg'); }
 
-        .subsection-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #4F4E54;
-            margin-bottom: 15px;
-            padding-left: 15px;
-            border-left: 3px solid #F06E90;
-        }
-
-        .service-list {
-            background: #f8f8f8;
-            border-radius: 12px;
+        /* Card Content */
+        .card-content {
+            position: relative;
+            z-index: 2;
             padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 200px;
+            background: white;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #F06E90;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .card-subtitle {
+            font-size: 16px;
+            color: #4F4E54;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        /* Service Items */
+        .service-items {
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .service-items::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .service-items::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .service-items::-webkit-scrollbar-thumb {
+            background: #F06E90;
+            border-radius: 10px;
         }
 
         .service-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #e0e0e0;
-            transition: all 0.2s ease;
-        }
-
-        .service-item:last-child {
-            border-bottom: none;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background: rgba(240, 110, 144, 0.05);
+            border-radius: 10px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
         }
 
         .service-item:hover {
-            background: rgba(240, 110, 144, 0.05);
-            margin: 0 -10px;
-            padding: 12px 10px;
-            border-radius: 8px;
+            background: rgba(240, 110, 144, 0.1);
+            border-left-color: #F06E90;
+            transform: translateX(5px);
         }
 
         .service-name {
             font-size: 14px;
             color: #4F4E54;
             flex: 1;
+            font-weight: 500;
         }
 
         .service-price {
@@ -170,39 +221,46 @@
             margin-left: 10px;
         }
 
-        .combo-programs {
-            background: linear-gradient(135deg, #F06E90 0%, #4F4E54 100%);
-            border-radius: 12px;
-            padding: 20px;
+        /* Combo Programs */
+        .combo-section {
             margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #F06E90 0%, #4F4E54 100%);
+            border-radius: 15px;
+            color: white;
         }
 
-        .combo-programs .subsection-title {
+        .combo-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
             color: white;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .combo-section .service-item {
+            background: rgba(255,255,255,0.1);
+            border-left-color: rgba(255,255,255,0.3);
+        }
+
+        .combo-section .service-item:hover {
+            background: rgba(255,255,255,0.2);
             border-left-color: white;
         }
 
-        .combo-programs .service-item {
-            border-bottom-color: rgba(255,255,255,0.2);
-        }
-
-        .combo-programs .service-name {
+        .combo-section .service-name {
             color: white;
         }
 
-        .combo-programs .service-price {
+        .combo-section .service-price {
             color: #FFE4EC;
         }
 
-        .combo-programs .service-item:hover {
-            background: rgba(255,255,255,0.1);
-        }
-
         .package-deal {
-            font-size: 12px;
+            font-size: 11px;
             color: rgba(255,255,255,0.8);
             font-style: italic;
-            margin-top: 5px;
+            margin-top: 3px;
         }
 
         /* Floating button */
@@ -226,188 +284,146 @@
             transform: translateY(-2px);
         }
 
+        /* Footer */
+        .footer {
+            background: #4F4E54;
+            color: white;
+            margin-top: 50px;
+            padding: 20px 0;
+            border-top: 1px solid rgba(240, 110, 144, 0.2);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-logo {
+            height: 35px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .footer-credits {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 11px;
+            font-weight: 300;
+        }
+
+        .credits-link {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .credits-link:hover {
+            color: rgba(240, 110, 144, 0.8);
+        }
+
         /* Mobile optimizations */
         @media (max-width: 768px) {
-            .service-item {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 15px 0;
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
 
-            .service-name {
-                margin-bottom: 5px;
-                font-size: 15px;
+            .service-card {
+                min-height: 500px;
             }
 
-            .service-price {
-                margin-left: 0;
-                font-size: 15px;
+            .card-background {
+                height: 200px;
+            }
+
+            .card-content {
+                margin-top: 150px;
             }
 
             .page-title {
                 font-size: 28px;
             }
 
-            .section-title {
-                font-size: 22px;
+            .card-title {
+                font-size: 24px;
+            }
+
+            .service-items {
+                max-height: 250px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .footer-left {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .footer-logo {
+                height: 30px;
+            }
+
+            .footer-copyright {
+                font-size: 13px;
             }
         }
 
         /* Tablet */
-        @media (min-width: 768px) {
-            .service-name {
-                font-size: 15px;
-            }
-
-            .service-price {
-                font-size: 15px;
-            }
-
-            .page-title {
-                font-size: 36px;
-            }
-
-            .section-title {
-                font-size: 26px;
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        /* Desktop */
-        @media (min-width: 1024px) {
-            .service-name {
-                font-size: 16px;
-            }
+        /* Animation */
+        .service-card {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
 
-            .service-price {
-                font-size: 16px;
-            }
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
 
-            .page-title {
-                font-size: 42px;
-            }
-
-            .section-title {
-                font-size: 28px;
-            }
-
-            .service-list {
-                padding: 30px;
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-.footer {
-    background: #4F4E54;
-    color: white;
-    margin-top: 30px;
-    padding: 20px 0;
-    border-top: 1px solid rgba(240, 110, 144, 0.2);
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.footer-left {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.footer-logo {
-    height: 35px;
-    width: auto;
-    filter: brightness(0) invert(1);
-}
-
-.footer-copyright {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 14px;
-    font-weight: 400;
-}
-
-.footer-right {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.footer-credits {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 11px;
-    font-weight: 300;
-}
-
-.credits-link {
-    color: rgba(255, 255, 255, 0.6);
-    text-decoration: none;
-    font-size: 11px;
-    font-weight: 400;
-    transition: color 0.3s ease;
-}
-
-.credits-link:hover {
-    color: rgba(240, 110, 144, 0.8);
-}
-
-/* Мобильная версия */
-@media (max-width: 768px) {
-    .footer {
-        padding: 15px 0;
-        margin-top: 10px;
-    }
-    
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-    }
-    
-    .footer-left {
-        flex-direction: column;
-        gap: 8px;
-    }
-    
-    .footer-logo {
-        height: 30px;
-    }
-    
-    .footer-copyright {
-        font-size: 13px;
-    }
-}
-
-/* Планшет и десктоп */
-@media (min-width: 769px) {
-    .footer-copyright {
-        font-size: 15px;
-    }
-    
-    .footer-logo {
-        height: 40px;
-    }
-}
-
-/* Анимация появления */
-.footer {
-    opacity: 0;
-    animation: fadeInUp 0.6s ease 0.3s forwards;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
+        .footer {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.5s forwards;
+        }
     </style>
 </head>
 <body>
@@ -424,533 +440,534 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
-            
             <h1 class="page-title">Наши услуги</h1>
 
-            <!-- Лазерная эпиляция -->
-            <section class="services-section">
-                <h2 class="section-title">Лазерная эпиляция</h2>
+            <!-- Services Grid -->
+            <div class="services-grid">
                 
-                <!-- Женская эпиляция -->
-                <div class="subsection">
-                    <h3 class="subsection-title">Для женщин</h3>
-                    <div class="service-list">
-                        <div class="service-item">
-                            <span class="service-name">Лоб</span>
-                            <span class="service-price">690₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Щеки</span>
-                            <span class="service-price">690₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Бакенбарды</span>
-                            <span class="service-price">690₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Верхняя губа</span>
-                            <span class="service-price">690₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Подбородок</span>
-                            <span class="service-price">690₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Шея</span>
-                            <span class="service-price">690₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Лицо полностью</span>
-                            <span class="service-price">1290₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Руки полностью</span>
-                            <span class="service-price">1790₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Руки до/выше локтя</span>
-                            <span class="service-price">1290₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Подмышечные впадины</span>
-                            <span class="service-price">890₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Кисти и пальцы рук</span>
-                            <span class="service-price">690₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Спина полностью</span>
-                            <span class="service-price">2090₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Поясница</span>
-                            <span class="service-price">1190₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Грудь</span>
-                            <span class="service-price">1190₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Ареолы</span>
-                            <span class="service-price">690₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Живот полностью</span>
-                            <span class="service-price">1190₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Линия живота</span>
-                            <span class="service-price">690₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Глубокое бикини</span>
-                            <span class="service-price">1790₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Классическое бикини</span>
-                            <span class="service-price">1290₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Ягодицы</span>
-                            <span class="service-price">1190₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Межъягодичная область</span>
-                            <span class="service-price">690₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Ноги полностью</span>
-                            <span class="service-price">2890₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Бедра</span>
-                            <span class="service-price">2190₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Голени</span>
-                            <span class="service-price">1790₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Стопы и пальцы ног</span>
-                            <span class="service-price">690₽</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Комплексные программы для женщин -->
-                    <div class="combo-programs">
-                        <h3 class="subsection-title">Комплексные программы</h3>
-                        <div class="service-item">
-                            <div>
-                                <div class="service-name">Minimum</div>
-                                <div class="service-name" style="font-size: 12px; opacity: 0.8;">Подмышечные впадины + глубокое бикини</div>
-                                <div class="package-deal">10 сеансов – 18300₽</div>
+                <!-- Women's Laser Hair Removal -->
+                <div class="service-card">
+                    <div class="card-background women-bg"></div>
+                    <div class="card-content">
+                        <h2 class="card-title">Лазерная эпиляция</h2>
+                        <p class="card-subtitle">Для женщин</p>
+                        
+                        <div class="service-items">
+                            <div class="service-item">
+                                <span class="service-name">Лоб</span>
+                                <span class="service-price">690₽</span>
                             </div>
-                            <span class="service-price">2290₽</span>
-                        </div>
-                        <div class="service-item">
-                            <div>
-                                <div class="service-name">Standard</div>
-                                <div class="service-name" style="font-size: 12px; opacity: 0.8;">Подмышечные впадины + глубокое бикини + голени</div>
-                                <div class="package-deal">10 сеансов – 27100₽</div>
+                            <div class="service-item">
+                                <span class="service-name">Щеки</span>
+                                <span class="service-price">690₽</span>
                             </div>
-                            <span class="service-price">3390₽</span>
-                        </div>
-                        <div class="service-item">
-                            <div>
-                                <div class="service-name">Maximum</div>
-                                <div class="service-name" style="font-size: 12px; opacity: 0.8;">Подмышечные впадины + глубокое бикини + ноги полностью</div>
-                                <div class="package-deal">10 сеансов – 35100₽</div>
+                            <div class="service-item">
+                                <span class="service-name">Бакенбарды</span>
+                                <span class="service-price">690₽</span>
                             </div>
-                            <span class="service-price">4390₽</span>
-                        </div>
-                        <div class="service-item">
-                            <div>
-                                <div class="service-name">All inclusive</div>
-                                <div class="service-name" style="font-size: 12px; opacity: 0.8;">Подмышечные впадины + руки полностью + глубокое бикини + ноги полностью</div>
-                                <div class="package-deal">10 сеансов – 44700₽</div>
+                            <div class="service-item">
+                                <span class="service-name">Верхняя губа</span>
+                                <span class="service-price">690₽</span>
                             </div>
-                            <span class="service-price">5590₽</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Мужская эпиляция -->
-                <div class="subsection">
-                    <h3 class="subsection-title">Для мужчин</h3>
-                    <div class="service-list">
-                        <div class="service-item">
-                            <span class="service-name">Лоб</span>
-                            <span class="service-price">890₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Межбровье</span>
-                            <span class="service-price">500₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Щеки</span>
-                            <span class="service-price">890₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Бакенбарды</span>
-                            <span class="service-price">890₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Верхняя губа</span>
-                            <span class="service-price">890₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Подбородок</span>
-                            <span class="service-price">890₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Шея</span>
-                            <span class="service-price">890₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Лицо полностью</span>
-                            <span class="service-price">1890₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Окантовка</span>
-                            <span class="service-price">1100₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Руки полностью</span>
-                            <span class="service-price">2190₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Руки до/выше локтя</span>
-                            <span class="service-price">1490₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Плечи</span>
-                            <span class="service-price">1090₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Подмышечные впадины</span>
-                            <span class="service-price">1090₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Кисти и пальцы рук</span>
-                            <span class="service-price">890₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Спина полностью</span>
-                            <span class="service-price">2990₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Поясница</span>
-                            <span class="service-price">1690₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Грудь</span>
-                            <span class="service-price">1690₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Ареолы/линия живота</span>
-                            <span class="service-price">990₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Живот полностью</span>
-                            <span class="service-price">1990₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Глубокое бикини</span>
-                            <span class="service-price">2990₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Классическое бикини</span>
-                            <span class="service-price">2190₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Ягодицы</span>
-                            <span class="service-price">1690₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Межъягодичная область</span>
-                            <span class="service-price">1190₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Ноги полностью</span>
-                            <span class="service-price">3190₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Бедра</span>
-                            <span class="service-price">2590₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Голени</span>
-                            <span class="service-price">2190₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Стопы и пальцы ног</span>
-                            <span class="service-price">990₽</span>
-                        </div>
-                    </div>
-
-                    <!-- Комплексные программы для мужчин -->
-                    <div class="combo-programs">
-                        <h3 class="subsection-title">Комплексные программы</h3>
-                        <div class="service-item">
-                            <div>
-                                <div class="service-name">Комбо 1</div>
-                                <div class="service-name" style="font-size: 12px; opacity: 0.8;">Подмышечные впадины + глубокое бикини</div>
-                                <div class="package-deal">10 сеансов – 35000₽</div>
+                            <div class="service-item">
+                                <span class="service-name">Подбородок</span>
+                                <span class="service-price">690₽</span>
                             </div>
-                            <span class="service-price">3890₽</span>
-                        </div>
-                        <div class="service-item">
-                            <div>
-                                <div class="service-name">Комбо 2</div>
-                                <div class="service-name" style="font-size: 12px; opacity: 0.8;">Лицо + подмышечные впадины</div>
-                                <div class="package-deal">10 сеансов – 24200₽</div>
+                            <div class="service-item">
+                                <span class="service-name">Шея</span>
+                                <span class="service-price">690₽</span>
                             </div>
-                            <span class="service-price">2690₽</span>
-                        </div>
-                        <div class="service-item">
-                            <div>
-                                <div class="service-name">Комбо 3</div>
-                                <div class="service-name" style="font-size: 12px; opacity: 0.8;">Грудь + живот</div>
-                                <div class="package-deal">10 сеансов – 33100₽</div>
+                            <div class="service-item">
+                                <span class="service-name">Лицо полностью</span>
+                                <span class="service-price">1290₽</span>
                             </div>
-                            <span class="service-price">3680₽</span>
-                        </div>
-                        <div class="service-item">
-                            <div>
-                                <div class="service-name">Комбо 4</div>
-                                <div class="service-name" style="font-size: 12px; opacity: 0.8;">Спина + живот</div>
-                                <div class="package-deal">10 сеансов – 44800₽</div>
+                            <div class="service-item">
+                                <span class="service-name">Руки полностью</span>
+                                <span class="service-price">1790₽</span>
                             </div>
-                            <span class="service-price">4980₽</span>
+                            <div class="service-item">
+                                <span class="service-name">Руки до/выше локтя</span>
+                                <span class="service-price">1290₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Подмышечные впадины</span>
+                                <span class="service-price">890₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Кисти и пальцы рук</span>
+                                <span class="service-price">690₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Спина полностью</span>
+                                <span class="service-price">2090₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Поясница</span>
+                                <span class="service-price">1190₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Грудь</span>
+                                <span class="service-price">1190₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Ареолы</span>
+                                <span class="service-price">690₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Живот полностью</span>
+                                <span class="service-price">1190₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Линия живота</span>
+                                <span class="service-price">690₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Глубокое бикини</span>
+                                <span class="service-price">1790₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Классическое бикини</span>
+                                <span class="service-price">1290₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Ягодицы</span>
+                                <span class="service-price">1190₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Межъягодичная область</span>
+                                <span class="service-price">690₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Ноги полностью</span>
+                                <span class="service-price">2890₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Бедра</span>
+                                <span class="service-price">2190₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Голени</span>
+                                <span class="service-price">1790₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Стопы и пальцы ног</span>
+                                <span class="service-price">690₽</span>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </section>
 
-            <!-- Аппаратная коррекция фигуры -->
-            <section class="services-section">
-                <h2 class="section-title">Аппаратная коррекция фигуры</h2>
-                
-                <div class="subsection">
-                    <h3 class="subsection-title">LPG массаж</h3>
-                    <div class="service-list">
-                        <div class="service-item">
-                            <span class="service-name">30 мин</span>
-                            <span class="service-price">1100₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">45 мин</span>
-                            <span class="service-price">1600₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">5 сеансов 30 мин</span>
-                            <span class="service-price">4950₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">10 сеансов 30 мин</span>
-                            <span class="service-price">9000₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">5 сеансов 45 мин</span>
-                            <span class="service-price">7000₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">10 сеансов 45 мин</span>
-                            <span class="service-price">14000₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Костюм</span>
-                            <span class="service-price">1000₽</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="subsection">
-                    <h3 class="subsection-title">Другие процедуры</h3>
-                    <div class="service-list">
-                        <div class="service-item">
-                            <span class="service-name">Вибромассаж 40 мин</span>
-                            <span class="service-price">1200₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">5 сеансов вибромассажа 40 мин</span>
-                            <span class="service-price">5400₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">10 сеансов вибромассажа 40 мин</span>
-                            <span class="service-price">10800₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Вакуумный массаж 30 мин</span>
-                            <span class="service-price">1200₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">5 сеансов вакуумного массажа 30 мин</span>
-                            <span class="service-price">5400₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">10 сеансов вакуумного массажа 30 мин</span>
-                            <span class="service-price">10800₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Комплекс из 20 процедур по коррекции фигуры</span>
-                            <span class="service-price">18000₽</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="subsection">
-                    <h3 class="subsection-title">INDIBA</h3>
-                    <div class="service-list">
-                        <div class="service-item">
-                            <span class="service-name">Индиба живот + бока</span>
-                            <span class="service-price">1500₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Индиба ноги</span>
-                            <span class="service-price">2000₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Индиба спина</span>
-                            <span class="service-price">2500₽</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Аппаратная косметология -->
-            <section class="services-section">
-                <h2 class="section-title">Аппаратная косметология</h2>
-                
-                <div class="subsection">
-                    <h3 class="subsection-title">Процедуры для лица</h3>
-                    <div class="service-list">
-                        <div class="service-item">
-                            <span class="service-name">Гидропилинг лицо + шея + декольте + маска</span>
-                            <span class="service-price">2900₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Дарсонваль</span>
-                            <span class="service-price">500₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Фотохромотерапия</span>
-                            <span class="service-price">500₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Фонофорез вокруг глаз</span>
-                            <span class="service-price">800₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Фонофорез лицо + шея</span>
-                            <span class="service-price">1800₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Биотоки лицо + шея + декольте</span>
-                            <span class="service-price">1800₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Алмазная шлифовка лица</span>
-                            <span class="service-price">1200₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Кислородная мезотерапия лица</span>
-                            <span class="service-price">2100₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Кислородная мезотерапия лицо + шея + декольте</span>
-                            <span class="service-price">2700₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Три полярный RF лифтинг лица</span>
-                            <span class="service-price">2500₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Три полярный RF лифтинг лицо + шея + декольте</span>
-                            <span class="service-price">3300₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Вакуумный массаж лица</span>
-                            <span class="service-price">1100₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Ультразвуковая чистка лица</span>
-                            <span class="service-price">2490₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Ультразвуковая чистка лица + механическая + маска (60-90 мин)</span>
-                            <span class="service-price">3500₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Микроигольчатый RF лифтинг лицо</span>
-                            <span class="service-price">15000₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Микроигольчатый RF лифтинг лицо + шея</span>
-                            <span class="service-price">18000₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Микроигольчатый RF лифтинг лицо + шея + декольте</span>
-                            <span class="service-price">20000₽</span>
+                        <!-- Combo Programs for Women -->
+                        <div class="combo-section">
+                            <h3 class="combo-title">Комплексные программы</h3>
+                            <div class="service-item">
+                                <div>
+                                    <div class="service-name">Minimum</div>
+                                    <div class="service-name" style="font-size: 11px; opacity: 0.8;">Подмышечные впадины + глубокое бикини</div>
+                                    <div class="package-deal">10 сеансов – 18300₽</div>
+                                </div>
+                                <span class="service-price">2290₽</span>
+                            </div>
+                            <div class="service-item">
+                                <div>
+                                    <div class="service-name">Standard</div>
+                                    <div class="service-name" style="font-size: 11px; opacity: 0.8;">Подмышечные впадины + глубокое бикини + голени</div>
+                                    <div class="package-deal">10 сеансов – 27100₽</div>
+                                </div>
+                                <span class="service-price">3390₽</span>
+                            </div>
+                            <div class="service-item">
+                                <div>
+                                    <div class="service-name">Maximum</div>
+                                    <div class="service-name" style="font-size: 11px; opacity: 0.8;">Подмышечные впадины + глубокое бикини + ноги полностью</div>
+                                    <div class="package-deal">10 сеансов – 35100₽</div>
+                                </div>
+                                <span class="service-price">4390₽</span>
+                            </div>
+                            <div class="service-item">
+                                <div>
+                                    <div class="service-name">All inclusive</div>
+                                    <div class="service-name" style="font-size: 11px; opacity: 0.8;">Подмышечные впадины + руки полностью + глубокое бикини + ноги полностью</div>
+                                    <div class="package-deal">10 сеансов – 44700₽</div>
+                                </div>
+                                <span class="service-price">5590₽</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="subsection">
-                    <h3 class="subsection-title">INDIBA для лица</h3>
-                    <div class="service-list">
-                        <div class="service-item">
-                            <span class="service-name">Индиба лицо + шея</span>
-                            <span class="service-price">1500₽</span>
+                <!-- Men's Laser Hair Removal -->
+                <div class="service-card">
+                    <div class="card-background men-bg"></div>
+                    <div class="card-content">
+                        <h2 class="card-title">Лазерная эпиляция</h2>
+                        <p class="card-subtitle">Для мужчин</p>
+                        
+                        <div class="service-items">
+                            <div class="service-item">
+                                <span class="service-name">Лоб</span>
+                                <span class="service-price">890₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Межбровье</span>
+                                <span class="service-price">500₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Щеки</span>
+                                <span class="service-price">890₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Бакенбарды</span>
+                                <span class="service-price">890₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Верхняя губа</span>
+                                <span class="service-price">890₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Подбородок</span>
+                                <span class="service-price">890₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Шея</span>
+                                <span class="service-price">890₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Лицо полностью</span>
+                                <span class="service-price">1890₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Окантовка</span>
+                                <span class="service-price">1100₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Руки полностью</span>
+                                <span class="service-price">2190₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Руки до/выше локтя</span>
+                                <span class="service-price">1490₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Плечи</span>
+                                <span class="service-price">1090₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Подмышечные впадины</span>
+                                <span class="service-price">1090₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Кисти и пальцы рук</span>
+                                <span class="service-price">890₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Спина полностью</span>
+                                <span class="service-price">2990₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Поясница</span>
+                                <span class="service-price">1690₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Грудь</span>
+                                <span class="service-price">1690₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Ареолы/линия живота</span>
+                                <span class="service-price">990₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Живот полностью</span>
+                                <span class="service-price">1990₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Глубокое бикини</span>
+                                <span class="service-price">2990₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Классическое бикини</span>
+                                <span class="service-price">2190₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Ягодицы</span>
+                                <span class="service-price">1690₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Межъягодичная область</span>
+                                <span class="service-price">1190₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Ноги полностью</span>
+                                <span class="service-price">3190₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Бедра</span>
+                                <span class="service-price">2590₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Голени</span>
+                                <span class="service-price">2190₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Стопы и пальцы ног</span>
+                                <span class="service-price">990₽</span>
+                            </div>
                         </div>
-                        <div class="service-item">
-                            <span class="service-name">Индиба лицо + шея + декольте</span>
-                            <span class="service-price">2000₽</span>
+
+                        <!-- Combo Programs for Men -->
+                        <div class="combo-section">
+                            <h3 class="combo-title">Комплексные программы</h3>
+                            <div class="service-item">
+                                <div>
+                                    <div class="service-name">Комбо 1</div>
+                                    <div class="service-name" style="font-size: 11px; opacity: 0.8;">Подмышечные впадины + глубокое бикини</div>
+                                    <div class="package-deal">10 сеансов – 35000₽</div>
+                                </div>
+                                <span class="service-price">3890₽</span>
+                            </div>
+                            <div class="service-item">
+                                <div>
+                                    <div class="service-name">Комбо 2</div>
+                                    <div class="service-name" style="font-size: 11px; opacity: 0.8;">Лицо + подмышечные впадины</div>
+                                    <div class="package-deal">10 сеансов – 24200₽</div>
+                                </div>
+                                <span class="service-price">2690₽</span>
+                            </div>
+                            <div class="service-item">
+                                <div>
+                                    <div class="service-name">Комбо 3</div>
+                                    <div class="service-name" style="font-size: 11px; opacity: 0.8;">Грудь + живот</div>
+                                    <div class="package-deal">10 сеансов – 33100₽</div>
+                                </div>
+                                <span class="service-price">3680₽</span>
+                            </div>
+                            <div class="service-item">
+                                <div>
+                                    <div class="service-name">Комбо 4</div>
+                                    <div class="service-name" style="font-size: 11px; opacity: 0.8;">Спина + живот</div>
+                                    <div class="package-deal">10 сеансов – 44800₽</div>
+                                </div>
+                                <span class="service-price">4980₽</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="subsection">
-                    <h3 class="subsection-title">Удаление татуировок и перманента</h3>
-                    <div class="service-list">
-                        <div class="service-item">
-                            <span class="service-name">Удаление тату 2 см × 2 см</span>
-                            <span class="service-price">1000₽</span>
+                <!-- Body Correction -->
+                <div class="service-card">
+                    <div class="card-background body-bg"></div>
+                    <div class="card-content">
+                        <h2 class="card-title">Коррекция фигуры</h2>
+                        <p class="card-subtitle">Аппаратные методики</p>
+                        
+                        <div class="service-items">
+                            <div class="service-item">
+                                <span class="service-name">LPG массаж 30 мин</span>
+                                <span class="service-price">1100₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">LPG массаж 45 мин</span>
+                                <span class="service-price">1600₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">5 сеансов LPG 30 мин</span>
+                                <span class="service-price">4950₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">10 сеансов LPG 30 мин</span>
+                                <span class="service-price">9000₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">5 сеансов LPG 45 мин</span>
+                                <span class="service-price">7000₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">10 сеансов LPG 45 мин</span>
+                                <span class="service-price">14000₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Костюм LPG</span>
+                                <span class="service-price">1000₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Вибромассаж 40 мин</span>
+                                <span class="service-price">1200₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">5 сеансов вибромассажа</span>
+                                <span class="service-price">5400₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">10 сеансов вибромассажа</span>
+                                <span class="service-price">10800₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Вакуумный массаж 30 мин</span>
+                                <span class="service-price">1200₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">5 сеансов вакуумного массажа</span>
+                                <span class="service-price">5400₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">10 сеансов вакуумного массажа</span>
+                                <span class="service-price">10800₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Индиба живот + бока</span>
+                                <span class="service-price">1500₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Индиба ноги</span>
+                                <span class="service-price">2000₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Индиба спина</span>
+                                <span class="service-price">2500₽</span>
+                            </div>
                         </div>
-                        <div class="service-item">
-                            <span class="service-name">Удаление тату 5 см × 5 см</span>
-                            <span class="service-price">2500₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Удаление тату 10 см × 10 см</span>
-                            <span class="service-price">3500₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Каждые дополнительные + 5 см</span>
-                            <span class="service-price">500₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Татуаж бровей</span>
-                            <span class="service-price">2000₽</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-name">Татуаж губ</span>
-                            <span class="service-price">1800₽</span>
+
+                        <!-- Special Program -->
+                        <div class="combo-section">
+                            <h3 class="combo-title">Специальное предложение</h3>
+                            <div class="service-item">
+                                <div>
+                                    <div class="service-name">Комплекс коррекции фигуры</div>
+                                    <div class="service-name" style="font-size: 11px; opacity: 0.8;">20 процедур различных методик</div>
+                                    <div class="package-deal">Максимальный результат</div>
+                                </div>
+                                <span class="service-price">18000₽</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="subsection">
-                    <h3 class="subsection-title">Специальные процедуры</h3>
-                    <div class="service-list">
-                        <div class="service-item">
-                            <span class="service-name">Карбоновый лазерный пилинг + альгинатная маска</span>
-                            <span class="service-price">2500₽</span>
+                <!-- Cosmetology -->
+                <div class="service-card">
+                    <div class="card-background cosmetology-bg"></div>
+                    <div class="card-content">
+                        <h2 class="card-title">Косметология</h2>
+                        <p class="card-subtitle">Аппаратные процедуры для лица</p>
+                        
+                        <div class="service-items">
+                            <div class="service-item">
+                                <span class="service-name">Гидропилинг лицо + шея + декольте</span>
+                                <span class="service-price">2900₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Ультразвуковая чистка лица</span>
+                                <span class="service-price">2490₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Чистка + механическая + маска</span>
+                                <span class="service-price">3500₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Карбоновый пилинг + маска</span>
+                                <span class="service-price">2500₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">RF лифтинг лица</span>
+                                <span class="service-price">2500₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">RF лифтинг лицо + шея + декольте</span>
+                                <span class="service-price">3300₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Микроигольчатый RF лицо</span>
+                                <span class="service-price">15000₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Микроигольчатый RF лицо + шея</span>
+                                <span class="service-price">18000₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Микроигольчатый RF полный</span>
+                                <span class="service-price">20000₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Кислородная мезотерапия лица</span>
+                                <span class="service-price">2100₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Мезотерапия лицо + шея + декольте</span>
+                                <span class="service-price">2700₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Алмазная шлифовка лица</span>
+                                <span class="service-price">1200₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Вакуумный массаж лица</span>
+                                <span class="service-price">1100₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Биотоки лицо + шея + декольте</span>
+                                <span class="service-price">1800₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Фонофорез лицо + шея</span>
+                                <span class="service-price">1800₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Фонофорез вокруг глаз</span>
+                                <span class="service-price">800₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Индиба лицо + шея</span>
+                                <span class="service-price">1500₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Индиба лицо + шея + декольте</span>
+                                <span class="service-price">2000₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Дарсонваль</span>
+                                <span class="service-price">500₽</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Фотохромотерапия</span>
+                                <span class="service-price">500₽</span>
+                            </div>
+                        </div>
+
+                        <!-- Tattoo Removal Section -->
+                        <div class="combo-section">
+                            <h3 class="combo-title">Удаление татуировок</h3>
+                            <div class="service-item">
+                                <div>
+                                    <div class="service-name">Татуировка 2×2 см</div>
+                                </div>
+                                <span class="service-price">1000₽</span>
+                            </div>
+                            <div class="service-item">
+                                <div>
+                                    <div class="service-name">Татуировка 5×5 см</div>
+                                </div>
+                                <span class="service-price">2500₽</span>
+                            </div>
+                            <div class="service-item">
+                                <div>
+                                    <div class="service-name">Татуировка 10×10 см</div>
+                                </div>
+                                <span class="service-price">3500₽</span>
+                            </div>
+                            <div class="service-item">
+                                <div>
+                                    <div class="service-name">Татуаж бровей</div>
+                                </div>
+                                <span class="service-price">2000₽</span>
+                            </div>
+                            <div class="service-item">
+                                <div>
+                                    <div class="service-name">Татуаж губ</div>
+                                </div>
+                                <span class="service-price">1800₽</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
+
+            </div>
         </div>
     </main>
 
@@ -958,19 +975,19 @@
     <a href="https://n1200395.yclients.com/company/1099799/personal/menu?o=" class="floating-btn">Записаться</a>
 
     <footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-left">
-                <img src="images/logotype.png" alt="Логотип" class="footer-logo">
-                <span class="footer-copyright">© 2025 Студия красивых тел</span>
-            </div>
-            <div class="footer-right">
-                <span class="footer-credits">made by</span>
-                <a href="https://tarakanov.dev" target="_blank" rel="noopener" class="credits-link">Tarakanov</a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <img src="images/logotype.png" alt="Логотип" class="footer-logo">
+                    <span class="footer-copyright">© 2025 Студия красивых тел</span>
+                </div>
+                <div class="footer-right">
+                    <span class="footer-credits">made by</span>
+                    <a href="https://tarakanov.dev" target="_blank" rel="noopener" class="credits-link">Tarakanov</a>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
 </body>
 </html>

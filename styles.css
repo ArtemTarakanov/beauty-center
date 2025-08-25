@@ -282,25 +282,168 @@ h2 {
     color: #4F4E54;
 }
 
-/* Promotions */
+/* Корпоративные цвета */
+:root {
+    --primary-color: #4F4E54;
+    --accent-color: #F06E90;
+    --text-light: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* МОБИЛЬНАЯ ВЕРСИЯ (по умолчанию) */
+.promotions {
+    padding: 40px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
 .promo-grid {
-    display: grid;
+    display: flex;
+    overflow-x: auto;
     gap: 20px;
-    grid-template-columns: 1fr;
+    padding: 10px 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 }
 
 .promo-card {
-    background: #f8f8f8;
-    padding: 20px;
-    border-radius: 8px;
-    border-left: 4px solid #F06E90;
+    flex: 0 0 auto;
+    scroll-snap-align: center;
 }
 
-.promo-card h3 {
-    color: #F06E90;
-    margin-bottom: 10px;
+/* Скрыть полосу прокрутки */
+.promo-grid::-webkit-scrollbar {
+    display: none;
 }
 
+.promo-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+.promo-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.promo-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0; /* По умолчанию снизу */
+    background: linear-gradient(135deg, var(--accent-color) 0%, #ff7ba3 100%);
+    color: var(--text-light);
+    padding: 10px; /* Уменьшили с 20px до 15px */
+    text-align: center;
+}
+
+.promo-content h3 {
+    font-size: 1rem; /* Уменьшили с 1.2rem */
+    font-weight: 500;
+    margin-bottom: 2px; /* Уменьшили с 5px */
+}
+
+.promo-content p {
+    font-size: 0.5rem; /* Уменьшили с 0.9rem */
+}
+
+/* Чередование позиций: сверху для 2-й и 4-й карточек */
+.promo-card:nth-child(2) .promo-content,
+.promo-card:nth-child(4) .promo-content {
+    bottom: auto;
+    top: 0;
+}
+
+.promo-content h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.promo-content p {
+    font-size: 0.9rem;
+}
+
+/* ПЛАНШЕТЫ */
+@media (min-width: 768px) {
+    .promotions {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
+    
+    .promo-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    .promo-content {
+        padding: 25px;
+    }
+    
+    .promo-content h3 {
+        font-size: 1.4rem;
+    }
+    
+    .promo-content p {
+        font-size: 1rem;
+    }
+}
+
+/* ДЕСКТОП */
+@media (min-width: 1024px) {
+    .promotions {
+        padding: 80px 0;
+    }
+    
+    .section-title {
+        font-size: 3rem;
+        margin-bottom: 50px;
+    }
+    
+    .promo-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+    }
+    
+    .promo-content h3 {
+        font-size: 1.5rem;
+    }
+    
+    .promo-content p {
+        font-size: 1.1rem;
+    }
+}
 /* Services & Reviews Carousel */
 .carousel {
     position: relative;
@@ -440,15 +583,38 @@ h2 {
 .map-container {
     position: relative;
     width: 100%;
-    height: 300px; /* базовая высота */
+    height: 250px; /* Базовая высота для мобилки */
     border-radius: 8px;
-    overflow: hidden; /* чтобы скругления применялись и к iframe */
+    overflow: hidden;
+    margin-top: 20px;
 }
 
 .map-container iframe {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
     border: 0;
+}
+
+/* Скрываем текстовые ссылки Яндекса */
+.map-container a {
+    display: none !important;
+}
+
+/* Планшет */
+@media (min-width: 768px) {
+    .map-container {
+        height: 350px;
+    }
+}
+
+/* Десктоп */
+@media (min-width: 1024px) {
+    .map-container {
+        height: 450px;
+    }
 }
 
 
